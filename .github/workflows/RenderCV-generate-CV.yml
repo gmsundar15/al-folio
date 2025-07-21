@@ -1,0 +1,57 @@
+name: Render a CV
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - "_data/cv.yml"
+  workflow_call: # to make the workflow triggerable from other workflows (release.yaml)
+
+permissions:
+  contents: write
+
+jobs:
+  rendercv:
+    name: RenderCV
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install RenderCV
+        run: |
+          pip install -r requirements.txt
+      - name: RenderCV
+        run: |
+          cd src
+          cv_file=$(find _data  -maxdepth 1 -type f -name "cv.yml")
+          if [ -z "$cv_file" ]; then
+            echo "No cv.yml file found!"
+            exit 1
+          fi
+          cd ..
+          rendercv render _data/$cv_file --pdf-path "assets/pdf/${{ github.actor }}_CV.pdf" --nomd --nohtml --nopng --design "_data/cv_design.yaml" --locale-catalog "_data/cv_locale.yaml" 
+      - name: Upload rendercv_output as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: RenderCV Output
+          path: rendercv_output
+      - uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          base: HEAD
+          filters: |
+            cv:
+              - '*_CV.typ'
+              - 'README.md'
+      - name: Push the changes
+        if: steps.changes.outputs.cv == 'true'
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git add -A
+          git commit -m "render the latest CV"
+          git push
