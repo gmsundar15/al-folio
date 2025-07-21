@@ -39,7 +39,7 @@ ninja.data = [{
           },
         },{id: "nav-cv",
           title: "cv",
-          description: "This is a description of the page. You can modify it in &#39;_pages/cv.md&#39;. You can also change or remove the top pdf download button.",
+          description: "This is a description of the page. You can modify it in &#39;_pages/cv.md&#39;. You can also change or remove the top pdf download button. The pdf is auto generated from RenderCV if cv.yml is present. The RenderCV output pdf name can be changed in line 35 of &#39;.github/workflows/RenderCV-genererate-CV.yml&#39;.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/al-folio/cv/";
