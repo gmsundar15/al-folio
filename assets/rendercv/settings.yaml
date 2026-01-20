@@ -1,15 +1,17 @@
 settings:
+  current_date: '2026-01-20'
   render_command:
     design:
     locale:
-    typst_path: assets/rendercv/rendercv_output/NAME_IN_SNAKE_CASE_CV.typ
-    pdf_path: assets/pdf/NAME_IN_SNAKE_CASE_CV.pdf
-    markdown_path: assets/rendercv/rendercv_output/NAME_IN_SNAKE_CASE_CV.md
-    html_path: assets/rendercv/rendercv_output/NAME_IN_SNAKE_CASE_CV.html
-    png_path: assets/rendercv/rendercv_output/NAME_IN_SNAKE_CASE_CV.png
-    dont_generate_markdown: true
-    dont_generate_html: true
-    dont_generate_typst: true
+    # Paths must be relative to cv.yml file
+    typst_path: ../assets/rendercv/rendercv_output/NAME_IN_SNAKE_CASE_CV.typ
+    pdf_path: ../assets/rendercv/rendercv_output/NAME_IN_SNAKE_CASE_CV.pdf
+    markdown_path: ../assets/rendercv/rendercv_output/NAME_IN_SNAKE_CASE_CV.md
+    html_path: ../assets/rendercv/rendercv_output/NAME_IN_SNAKE_CASE_CV.html
+    png_path: ../assets/rendercv/rendercv_output/NAME_IN_SNAKE_CASE_CV.png
+    dont_generate_markdown: false
+    dont_generate_html: false
+    dont_generate_typst: false
     dont_generate_pdf: false
-    dont_generate_png: true
+    dont_generate_png: false
   bold_keywords: []
