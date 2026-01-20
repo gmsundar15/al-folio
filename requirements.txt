@@ -1,3 +1,4 @@
+rendercv[full]
 nbconvert
 pyyaml
 scholarly
