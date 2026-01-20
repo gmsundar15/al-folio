@@ -5,15 +5,15 @@ on:
       - main
       - master
       - rendercv-ci-test
-    paths:
-      - "_data/cv.yml"
-      - "_data/cv.yaml"
-      - "assets/rendercv/design.yaml"
-      - "assets/rendercv/design.yml"
-      - "assets/rendercv/locale.yaml"
-      - "assets/rendercv/locale.yml"
-      - "assets/rendercv/settings.yaml"
-      - "assets/rendercv/settings.yml"
+    # paths:
+    #   - "_data/cv.yml"
+    #   - "_data/cv.yaml"
+    #   - "assets/rendercv/design.yaml"
+    #   - "assets/rendercv/design.yml"
+    #   - "assets/rendercv/locale.yaml"
+    #   - "assets/rendercv/locale.yml"
+    #   - "assets/rendercv/settings.yaml"
+    #   - "assets/rendercv/settings.yml"
   workflow_call:
   workflow_dispatch:
 permissions:
